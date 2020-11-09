@@ -14,7 +14,9 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -46,7 +48,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String CurrentDateString = DateFormat.getDateInstance().format(c.getTime());
+        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
+
+        TextView textView = (TextView) findViewById (R.id.startDate1);
+        textView.setText(currentDateString);
     }
 
     @Override
