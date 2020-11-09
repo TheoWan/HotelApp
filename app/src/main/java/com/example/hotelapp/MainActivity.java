@@ -1,5 +1,6 @@
 package com.example.hotelapp;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -7,13 +8,18 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.DatePicker;
 
-public class MainActivity extends AppCompatActivity {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +32,21 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+               // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
+               //         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH,month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String CurrentDateString = DateFormat.getDateInstance().format(c.getTime());
     }
 
     @Override
@@ -54,3 +71,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
