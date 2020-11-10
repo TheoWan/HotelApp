@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -17,7 +19,31 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_first, container, false);
+
+
+        Button startDateButton = (Button) rootView.findViewById(R.id.startDate);
+        startDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
+                // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
+                //         .setAction("Action", null).show();
+            }
+        });
+
+        Button endDateButton = (Button) rootView.findViewById(R.id.endDate);
+        endDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
+                // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
+                //         .setAction("Action", null).show();
+            }
+        });
+        return rootView;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {

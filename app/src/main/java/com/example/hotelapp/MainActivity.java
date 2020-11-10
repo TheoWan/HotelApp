@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,17 +28,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getSupportFragmentManager(), "date picker");
-               // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
-               //         .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -50,8 +38,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString = DateFormat.getDateInstance().format(c.getTime());
 
-        TextView textView = (TextView) findViewById (R.id.startDate1);
+        TextView textView = (TextView) findViewById (R.id.startDate);
         textView.setText(currentDateString);
+
+        TextView textView1 = (TextView) findViewById (R.id.endDate);
+        textView1.setText(currentDateString);
     }
 
     @Override
