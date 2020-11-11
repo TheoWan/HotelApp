@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -36,13 +34,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
+        String currentDateString1 = DateFormat.getDateInstance().format(c.getTime());
+        String currentDateString2 = DateFormat.getDateInstance().format(c.getTime());
 
         TextView textView = (TextView) findViewById (R.id.startDate);
-        textView.setText(currentDateString);
-
-        TextView textView1 = (TextView) findViewById (R.id.endDate);
-        textView1.setText(currentDateString);
+        textView.setText(currentDateString1);
     }
 
     @Override

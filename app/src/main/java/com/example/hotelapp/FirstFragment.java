@@ -28,19 +28,6 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
-                // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
-                //         .setAction("Action", null).show();
-            }
-        });
-
-        Button endDateButton = (Button) rootView.findViewById(R.id.endDate);
-        endDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
-                // Snackbar.make(view, "Hi", Snackbar.LENGTH_LONG)
-                //         .setAction("Action", null).show();
             }
         });
         return rootView;
